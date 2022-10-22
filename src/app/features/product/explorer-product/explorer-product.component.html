@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-6">
+    <h1 class="title">Productos</h1>
+  </div>
+  <div class="col-6">
+    <button class="float-end align-middle" mat-button (click)="generate()">
+      Regenerar
+    </button>
+    <a
+      [routerLink]="['/product', 'new']"
+      class="float-end align-middle"
+      mat-stroked-button
+      color="primary"
+      >Crear</a
+    >
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <form>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Buscar...</mat-label>
+        <input matInput (input)="search(searchInput.value)" #searchInput />
+      </mat-form-field>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <mat-list>
+    <app-product-item
+      *ngFor="let product of products"
+      [product]="product"
+      (reload)="loadProducts(searchInput.value)"
+    ></app-product-item>
+  </mat-list>
+</div>

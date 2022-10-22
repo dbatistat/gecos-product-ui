@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-6">
+    <h1 class="title">{{ productAction.title }}</h1>
+  </div>
+  <div class="col-6">
+    <a
+      [routerLink]="['/product']"
+      class="float-end align-middle"
+      mat-stroked-button
+      color="primary"
+      >Explorador</a
+    >
+  </div>
+</div>
+
+<div class="main">
+  <form [formGroup]="productForm" (ngSubmit)="handleSubmitProduct()" >
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-xl-4">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Identificador</mat-label>
+          <input matInput placeholder="Identificador" formControlName="id"/>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-12 col-sm-12 col-xl-2">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Código</mat-label>
+          <input matInput placeholder="Código" formControlName="code" required/>
+          <mat-error *ngIf="code?.errors?.['required']">Código es requerido</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-12 col-sm-12 col-xl-6">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Nombre</mat-label>
+          <input matInput placeholder="Nombre" formControlName="name" required/>
+          <mat-error *ngIf="name?.errors?.['required']">Nombre es requerido</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <button
+      *ngIf="productAction.action !== 'view'"
+      class="float-end"
+      mat-raised-button
+      color="primary"
+    >
+      Guardar
+    </button>
+  </form>
+</div>

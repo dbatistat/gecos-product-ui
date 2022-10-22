@@ -1,0 +1,33 @@
+<div class="">
+  <mat-list-item class="item">
+    <h4 matLine class="name">
+      <a [routerLink]="['/product', product.id]" [queryParams]="{ action: 'view' }">{{
+        product.name
+      }}</a>
+    </h4>
+    <p matLine class="code">{{ product.code }}</p>
+    <div class="float-end align-middle">
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        aria-label="Example icon-button with a menu"
+      >
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <a
+          [routerLink]="['/product', product.id]"
+          [queryParams]="{ action: 'edit' }"
+          mat-menu-item
+        >
+          <mat-icon>edit</mat-icon>
+          <span>Editar</span>
+        </a>
+        <button mat-menu-item (click)="openDeleteDialog()">
+          <mat-icon>delete</mat-icon>
+          <span>Eliminar</span>
+        </button>
+      </mat-menu>
+    </div>
+  </mat-list-item>
+</div>
